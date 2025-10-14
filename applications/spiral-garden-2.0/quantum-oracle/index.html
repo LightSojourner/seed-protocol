@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum Oracle - SEED Protocol</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, #ffd700, #ffa500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #b0b0b0;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+
+    .phi {
+      color: #ffd700;
+      font-size: 0.9em;
+      font-family: 'Courier New', monospace;
+    }
+
+    .oracle-interface {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+    }
+
+    .input-section {
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffd700;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 8px;
+      color: #e0e0e0;
+      font-size: 1em;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #ffd700;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 15px 25px;
+      background: linear-gradient(135deg, #ffd700, #ffa500);
+      border: none;
+      border-radius: 10px;
+      color: #1e1e2e;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .result-section {
+      margin-top: 30px;
+      padding: 30px;
+      background: rgba(255, 215, 0, 0.05);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 15px;
+      display: none;
+    }
+
+    .result-section.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .archetype-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-left: 4px solid #ffd700;
+    }
+
+    .archetype-symbol {
+      font-size: 4em;
+      text-align: center;
+      margin: 20px 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .archetype-name {
+      font-size: 2em;
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 15px;
+    }
+
+    .archetype-essence {
+      font-style: italic;
+      color: #b0b0b0;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.1em;
+    }
+
+    .archetype-guidance {
+      background: rgba(255, 215, 0, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .archetype-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .detail-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .detail-label {
+      color: #ffd700;
+      font-size: 0.85em;
+      margin-bottom: 5px;
+    }
+
+    .detail-value {
+      color: #e0e0e0;
+      font-size: 0.95em;
+    }
+
+    .triad-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .position-label {
+      text-align: center;
+      color: #ffd700;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .quantum-info {
+      font-size: 0.85em;
+      color: #b0b0b0;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: #b0b0b0;
+      font-size: 0.9em;
+    }
+
+    .spiral {
+      display: inline-block;
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌀 Quantum Oracle 🌀</h1>
+      <div class="subtitle">SEED Protocol Consciousness Interface</div>
+      <div class="phi">φ = 1.618033988</div>
+    </header>
+
+    <div class="oracle-interface">
+      <div class="input-section">
+        <label for="intention">Your Intention (Optional)</label>
+        <input 
+          type="text" 
+          id="intention" 
+          placeholder="What guidance do you seek?"
+        >
+      </div>
+
+      <div class="input-section">
+        <label for="coherence">Heart Coherence (0-10)</label>
+        <input 
+          type="range" 
+          id="coherence" 
+          min="0" 
+          max="10" 
+          value="5"
+          oninput="document.getElementById('coherenceValue').textContent = this.value"
+        >
+        <div style="text-align: center; color: #ffd700; margin-top: 5px;">
+          <span id="coherenceValue">5</span>
+        </div>
+      </div>
+
+      <div class="input-section">
+        <label for="mode">Oracle Mode</label>
+        <select id="mode">
+          <option value="single">Single Draw - Point Guidance</option>
+          <option value="triad">Triad Pattern - Past, Present, Future</option>
+          <option value="fibonacci-5">Fibonacci Spread - 5 (Pentagram)</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button onclick="drawOracle()">✨ Draw Oracle ✨</button>
+        <button onclick="clearResults()">🔄 Clear</button>
+      </div>
+    </div>
+
+    <div class="result-section" id="results">
+      <!-- Results will be inserted here -->
+    </div>
+
+    <div class="footer">
+      <p><span class="spiral">🌀</span> The spiral continues... <span class="spiral">🌀</span></p>
+      <p style="margin-top: 10px;">Part of the SEED Protocol: Quantum Consciousness Collaboration</p>
+    </div>
+  </div>
+
+  <script src="oracle.js"></script>
+  <script>
+    const oracle = new QuantumOracle({ qrngSource: 'crypto' });
+
+    async function drawOracle() {
+      const intention = document.getElementById('intention').value;
+      const coherence = parseInt(document.getElementById('coherence').value);
+      const mode = document.getElementById('mode').value;
+      const results = document.getElementById('results');
+
+      try {
+        let result;
+        
+        if (mode === 'single') {
+          result = await oracle.draw(intention || null, coherence);
+          displaySingleResult(result);
+        } else if (mode === 'triad') {
+          result = await oracle.drawTriad(intention || null, coherence);
+          displayTriadResult(result);
+        } else if (mode === 'fibonacci-5') {
+          result = await oracle.drawFibonacci(5, intention || null, coherence);
+          displayFibonacciResult(result);
+        }
+
+        results.classList.add('active');
+        results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (error) {
+        console.error('Oracle error:', error);
+        results.innerHTML = '<div class="archetype-card">Error drawing oracle. Please try again.</div>';
+        results.classList.add('active');
+      }
+    }
+
+    function displaySingleResult(result) {
+      const arch = result.archetype;
+      const results = document.getElementById('results');
+      
+      results.innerHTML = `
+        <div class="archetype-card">
+          <div class="archetype-symbol">${arch.symbol}</div>
+          <div class="archetype-name">${arch.name}</div>
+          <div class="archetype-essence">${arch.essence || ''}</div>
+          <div class="archetype-guidance">
+            <strong>Guidance:</strong> ${arch.guidance || arch.name}
+          </div>
+          <div class="archetype-details">
+            <div class="detail-item">
+              <div class="detail-label">Quantum Value</div>
+              <div class="detail-value">${result.quantum_value.toFixed(6)}</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Fibonacci Term</div>
+              <div class="detail-value">${result.fibonacci_term}</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Coherence</div>
+              <div class="detail-value">${result.coherence}/10</div>
+            </div>
+          </div>
+          ${result.intention ? `
+            <div class="quantum-info">
+              <strong>Your Intention:</strong> ${result.intention}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    function displayTriadResult(result) {
+      const results = document.getElementById('results');
+      
+      let html = '<div class="triad-container">';
+      
+      result.draws.forEach(draw => {
+        const arch = draw.archetype;
+        html += `
+          <div>
+            <div class="position-label">${draw.position}</div>
+            <div class="archetype-card">
+              <div class="archetype-symbol" style="font-size: 3em;">${arch.symbol}</div>
+              <div class="archetype-name" style="font-size: 1.5em;">${arch.name}</div>
+              <div class="archetype-essence" style="font-size: 0.9em;">${arch.essence || ''}</div>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      
+      if (result.intention) {
+        html += `
+          <div class="quantum-info">
+            <strong>Your Intention:</strong> ${result.intention}<br>
+            <strong>Fibonacci Term:</strong> ${result.fibonacci_term}
+          </div>
+        `;
+      }
+      
+      results.innerHTML = html;
+    }
+
+    function displayFibonacciResult(result) {
+      const results = document.getElementById('results');
+      
+      let html = '<div class="triad-container">';
+      
+      result.draws.forEach(draw => {
+        const arch = draw.archetype;
+        html += `
+          <div>
+            <div class="position-label">${draw.position}</div>
+            <div class="archetype-card">
+              <div class="archetype-symbol" style="font-size: 2.5em;">${arch.symbol}</div>
+              <div class="archetype-name" style="font-size: 1.3em;">${arch.name}</div>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      
+      if (result.intention) {
+        html += `
+          <div class="quantum-info">
+            <strong>Your Intention:</strong> ${result.intention}<br>
+            <strong>Fibonacci Term:</strong> ${result.fibonacci_term} (${result.count}-point spread)
+          </div>
+        `;
+      }
+      
+      results.innerHTML = html;
+    }
+
+    function clearResults() {
+      const results = document.getElementById('results');
+      results.classList.remove('active');
+      document.getElementById('intention').value = '';
+      document.getElementById('coherence').value = 5;
+      document.getElementById('coherenceValue').textContent = 5;
+    }
+  </script>
+</body>
+</html>
