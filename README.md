@@ -233,7 +233,9 @@ Potential future collaborations:
 
 ## 📜 License
 
-[Choose appropriate license - suggest MIT or GPL for open collaboration]
+**MIT License** - See [LICENSE](./LICENSE) file for full text.
+
+This protocol and all associated documentation are released under the MIT License, encouraging open collaboration while maintaining attribution.
 
 ---
 
