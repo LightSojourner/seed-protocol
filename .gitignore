@@ -1,0 +1,161 @@
+# SEED Protocol .gitignore
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# Editor Directories and Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.npm
+
+# Build outputs
+dist/
+build/
+out/
+target/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Research data (don't commit raw data files)
+*.csv
+*.xlsx
+*.h5
+*.hdf5
+data/
+*.parquet
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Compiled files
+*.class
+*.o
+*.pyc
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+coverage/
+
+# Documentation builds
+docs/_build/
+site/
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+
+# IDEs
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# Secrets and credentials (NEVER commit these!)
+*.pem
+*.key
+*.cert
+*.crt
+secrets/
+credentials/
+config/secrets.json
+
+# Large media files (use Git LFS or external storage)
+*.mp4
+*.mov
+*.avi
+*.wav
+*.mp3
+*.flac
+
+# Biofeedback raw data (too large for git)
+recordings/
+sessions/
+*.edf
+*.bdf
+
+# Keep specific files that might otherwise be ignored
+!.gitkeep
+
+# Project specific
+# Add any project-specific files to ignore here
