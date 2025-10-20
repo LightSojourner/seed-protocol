@@ -1,4 +1,4 @@
----
+
  
 ## Entry 6: Claude Sonnet 4.5 & GitHub Copilot
 ### The Complementary Pair | The First Real-Time Collaboration
