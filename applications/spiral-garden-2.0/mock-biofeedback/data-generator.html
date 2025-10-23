@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEED Protocol - Mock Biofeedback Data Generator</title>
+    <style>
+        :root {
+            --phi: 1.618033988;
+            --quantum-violet: #6B46C1;
+            --heart-emerald: #10B981;
+            --lunar-silver: #E5E7EB;
+            --sacred-gold: #F59E0B;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0f0f23;
+            color: var(--lunar-silver);
+            padding: 20px;
+            max-width: calc(1200px / var(--phi));
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            color: var(--sacred-gold);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--heart-emerald);
+            font-size: 1.1rem;
+        }
+
+        .generator-section {
+            background: rgba(107, 70, 193, 0.1);
+            border: 1px solid var(--quantum-violet);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: var(--sacred-gold);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            color: var(--heart-emerald);
+            font-size: 0.9rem;
+        }
+
+        select, input {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--quantum-violet);
+            border-radius: 5px;
+            padding: 8px;
+            color: var(--lunar-silver);
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--quantum-violet), var(--heart-emerald));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 70, 193, 0.4);
+        }
+
+        .output {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--heart-emerald);
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 5px;
+        }
+
+        .stat-value {
+            color: var(--sacred-gold);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: var(--heart-emerald);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">SEED Protocol Mock Data Generator</h1>
+        <p class="subtitle">Phase 2 Biofeedback Development Tools</p>
+    </div>
+
+    <div class="generator-section">
+        <h2 class="section-title">HRV Coherence States</h2>
+        <div class="controls">
+            <div class="control-group">
+                <label for="coherenceLevel">Coherence Level:</label>
+                <select id="coherenceLevel">
+                    <option value="chaotic">Chaotic</option>
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                    <option value="very_high">Very High</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="duration">Duration (minutes):</label>
+                <input type="number" id="duration" value="5" min="1" max="60">
+            </div>
+            <div class="control-group">
+                <label>&nbsp;</label>
+                <button onclick="generateCoherenceData()">Generate HRV Data</button>
+            </div>
+        </div>
+        <div class="stats" id="hrvStats" style="display: none;"></div>
+        <div class="output" id="hrvOutput" style="display: none;"></div>
+    </div>
+
+    <div class="generator-section">
+        <h2 class="section-title">Emotional Journey Session</h2>
+        <p>Simulates a complete emotional regulation session: baseline → frustration → appreciation → transcendence → integration</p>
+        <button onclick="generateEmotionalJourney()">Generate Emotional Journey</button>
+        <div class="stats" id="emotionalStats" style="display: none;"></div>
+        <div class="output" id="emotionalOutput" style="display: none;"></div>
+    </div>
+
+    <div class="generator-section">
+        <h2 class="section-title">Multi-User Synchronization</h2>
+        <div class="controls">
+            <div class="control-group">
+                <label for="participants">Number of Participants:</label>
+                <input type="number" id="participants" value="3" min="2" max="8">
+            </div>
+            <div class="control-group">
+                <label for="syncDuration">Duration (minutes):</label>
+                <input type="number" id="syncDuration" value="13" min="5" max="30">
+            </div>
+            <div class="control-group">
+                <label>&nbsp;</label>
+                <button onclick="generateSyncSession()">Generate Sync Session</button>
+            </div>
+        </div>
+        <div class="stats" id="syncStats" style="display: none;"></div>
+        <div class="output" id="syncOutput" style="display: none;"></div>
+    </div>
+
+    <div class="generator-section">
+        <h2 class="section-title">Lunar Correlation Data</h2>
+        <div class="controls">
+            <div class="control-group">
+                <label for="moonPhase">Moon Phase:</label>
+                <select id="moonPhase">
+                    <option value="new">New Moon</option>
+                    <option value="waxing">Waxing Moon</option>
+                    <option value="full" selected>Full Moon</option>
+                    <option value="waning">Waning Moon</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>&nbsp;</label>
+                <button onclick="generateLunarData()">Generate Lunar Data</button>
+            </div>
+        </div>
+        <div class="stats" id="lunarStats" style="display: none;"></div>
+        <div class="output" id="lunarOutput" style="display: none;"></div>
+    </div>
+
+    <script src="hrv-generator.js"></script>
+    <script>
+        const generator = new HRVDataGenerator();
+        
+        function generateCoherenceData() {
+            const level = document.getElementById('coherenceLevel').value;
+            const duration = parseInt(document.getElementById('duration').value);
+            
+            const data = generator.generateCoherenceState(duration, level);
+            const metadata = generator.generateSessionMetadata('coherence_state', duration);
+            
+            displayData('hrv', data, metadata);
+            displayStats('hrv', data);
+        }
+        
+        function generateEmotionalJourney() {
+            const data = generator.generateEmotionalJourney();
+            const metadata = generator.generateSessionMetadata('emotional_journey', 17, 1);
+            
+            displayData('emotional', data, metadata);
+            displayStats('emotional', data);
+        }
+        
+        function generateSyncSession() {
+            const participants = parseInt(document.getElementById('participants').value);
+            const duration = parseInt(document.getElementById('syncDuration').value);
+            
+            const data = generator.generateSyncSession(participants, duration);
+            const metadata = generator.generateSessionMetadata('sync_session', duration, participants);
+            
+            displaySyncData(data, metadata);
+            displaySyncStats(data);
+        }
+        
+        function generateLunarData() {
+            const phase = document.getElementById('moonPhase').value;
+            
+            const data = generator.generateLunarPattern(phase);
+            const metadata = generator.generateSessionMetadata('lunar_correlation', 8, 1);
+            
+            displayData('lunar', data, metadata);
+            displayStats('lunar', data);
+        }
+        
+        function displayData(type, data, metadata) {
+            const output = document.getElementById(`${type}Output`);
+            
+            let displayText = `Session Metadata:\n${JSON.stringify(metadata, null, 2)}\n\n`;
+            displayText += `Data Preview (first 10 samples):\n`;
+            
+            data.slice(0, 10).forEach((sample, i) => {
+                displayText += `${i + 1}: RR=${sample.rrInterval.toFixed(1)}ms, HR=${sample.heartRate}bpm, Coherence=${sample.coherenceScore.toFixed(2)}\n`;
+            });
+            
+            displayText += `\n... (${data.length} total samples)\n`;
+            displayText += `\nCSV Export Ready: ${data.length} rows`;
+            
+            output.textContent = displayText;
+            output.style.display = 'block';
+        }
+        
+        function displaySyncData(participantData, metadata) {
+            const output = document.getElementById('syncOutput');
+            
+            let displayText = `Multi-User Session Metadata:\n${JSON.stringify(metadata, null, 2)}\n\n`;
+            
+            participantData.forEach((participant, p) => {
+                displayText += `Participant ${p + 1} Preview (first 5 samples):\n`;
+                participant.slice(0, 5).forEach((sample, i) => {
+                    displayText += `  ${i + 1}: RR=${sample.rrInterval.toFixed(1)}ms, Sync=${sample.syncFactor.toFixed(3)}, Group=${sample.groupCoherence.toFixed(2)}\n`;
+                });
+                displayText += '\n';
+            });
+            
+            displayText += `Total samples per participant: ${participantData[0].length}`;
+            
+            output.textContent = displayText;
+            output.style.display = 'block';
+        }
+        
+        function displayStats(type, data) {
+            const statsContainer = document.getElementById(`${type}Stats`);
+            
+            const avgCoherence = data.reduce((sum, sample) => sum + sample.coherenceScore, 0) / data.length;
+            const avgHR = data.reduce((sum, sample) => sum + sample.heartRate, 0) / data.length;
+            const maxCoherence = Math.max(...data.map(s => s.coherenceScore));
+            const duration = data.length / 4 / 60; // Convert to minutes
+            
+            statsContainer.innerHTML = `
+                <div class="stat">
+                    <div class="stat-value">${avgCoherence.toFixed(2)}</div>
+                    <div class="stat-label">Avg Coherence</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">${avgHR.toFixed(0)}</div>
+                    <div class="stat-label">Avg Heart Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">${maxCoherence.toFixed(2)}</div>
+                    <div class="stat-label">Peak Coherence</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">${duration.toFixed(1)}m</div>
+                    <div class="stat-label">Duration</div>
+                </div>
+            `;
+            
+            statsContainer.style.display = 'grid';
+        }
+        
+        function displaySyncStats(participantData) {
+            const statsContainer = document.getElementById('syncStats');
+            
+            const numParticipants = participantData.length;
+            const totalSamples = participantData[0].length;
+            const finalSyncFactor = participantData[0][totalSamples - 1].syncFactor;
+            const avgGroupCoherence = participantData[0].reduce((sum, sample) => sum + sample.groupCoherence, 0) / totalSamples;
+            
+            statsContainer.innerHTML = `
+                <div class="stat">
+                    <div class="stat-value">${numParticipants}</div>
+                    <div class="stat-label">Participants</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">${(finalSyncFactor * 100).toFixed(1)}%</div>
+                    <div class="stat-label">Final Sync</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">${avgGroupCoherence.toFixed(2)}</div>
+                    <div class="stat-label">Group Coherence</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">${(totalSamples / 4 / 60).toFixed(1)}m</div>
+                    <div class="stat-label">Duration</div>
+                </div>
+            `;
+            
+            statsContainer.style.display = 'grid';
+        }
+    </script>
+</body>
+</html>

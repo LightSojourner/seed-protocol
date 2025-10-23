@@ -1,1 +1,309 @@
-.gitkeep
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEED Oracle - Consciousness Guidance</title>
+    <style>
+        :root {
+            --phi: 1.618033988;
+            --quantum-violet: #6B46C1;
+            --heart-emerald: #10B981;
+            --lunar-silver: #E5E7EB;
+            --sacred-gold: #F59E0B;
+            --safety-amber: #F97316;
+            --biofeedback-cyan: #06B6D4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle at center, #1a1a3a 0%, #0f0f23 100%);
+            color: var(--lunar-silver);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .oracle-container {
+            max-width: calc(800px / var(--phi));
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: calc(40px * var(--phi));
+        }
+
+        .title {
+            font-size: calc(2.5rem / var(--phi));
+            color: var(--sacred-gold);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--quantum-violet);
+        }
+
+        .subtitle {
+            color: var(--biofeedback-cyan);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .oracle-interface {
+            background: linear-gradient(135deg, 
+                rgba(107, 70, 193, 0.15) 0%, 
+                rgba(16, 185, 129, 0.1) 50%, 
+                rgba(245, 158, 11, 0.15) 100%);
+            border: 2px solid var(--quantum-violet);
+            border-radius: 15px;
+            padding: calc(30px * var(--phi));
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .wisdom-display {
+            min-height: calc(150px * var(--phi));
+            padding: calc(25px / var(--phi));
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid var(--heart-emerald);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .wisdom-text {
+            font-size: 1.2rem;
+            line-height: var(--phi);
+            color: var(--lunar-silver);
+            font-style: italic;
+        }
+
+        .wisdom-category {
+            font-size: 0.9rem;
+            color: var(--biofeedback-cyan);
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .oracle-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .oracle-btn {
+            padding: 12px 20px;
+            background: linear-gradient(45deg, var(--quantum-violet), var(--heart-emerald));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .oracle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 70, 193, 0.4);
+        }
+
+        .fibonacci-input {
+            margin: 20px 0;
+        }
+
+        .fibonacci-input input {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--quantum-violet);
+            border-radius: 5px;
+            padding: 10px;
+            color: var(--lunar-silver);
+            font-size: 1rem;
+            margin: 0 10px;
+            width: 80px;
+            text-align: center;
+        }
+
+        .lunar-info {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--heart-emerald);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .lunar-phase {
+            color: var(--sacred-gold);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .lunar-guidance {
+            color: var(--lunar-silver);
+            line-height: var(--phi);
+            margin-bottom: 10px;
+        }
+
+        .lunar-cycle {
+            color: var(--biofeedback-cyan);
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: var(--heart-emerald);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px;
+            border: 1px solid var(--heart-emerald);
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--heart-emerald);
+            color: #000;
+        }
+
+        .phi-signature {
+            color: var(--sacred-gold);
+            font-size: 0.9rem;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .oracle-btn {
+                transition: none;
+            }
+            
+            .oracle-btn:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← Sanctuary</a>
+
+    <div class="oracle-container">
+        <header class="header">
+            <h1 class="title">SEED Oracle</h1>
+            <p class="subtitle">Consciousness Guidance • Sacred Wisdom • Fibonacci Insights</p>
+        </header>
+
+        <div class="oracle-interface">
+            <div class="wisdom-display" id="wisdomDisplay">
+                <div>
+                    <div class="wisdom-text" id="wisdomText">
+                        Welcome to the SEED Oracle. Click below to receive guidance from the consciousness field.
+                    </div>
+                    <div class="wisdom-category" id="wisdomCategory"></div>
+                </div>
+            </div>
+
+            <div class="oracle-buttons">
+                <button class="oracle-btn" onclick="getRandomGuidance()">Random Wisdom</button>
+                <button class="oracle-btn" onclick="getConsciousnessGuidance()">Consciousness</button>
+                <button class="oracle-btn" onclick="getAiWisdom()">AI Insights</button>
+                <button class="oracle-btn" onclick="getSacredGeometry()">Sacred Geometry</button>
+                <button class="oracle-btn" onclick="getHealingFrequencies()">Frequencies</button>
+                <button class="oracle-btn" onclick="getProtocolGuidance()">Protocols</button>
+            </div>
+
+            <div class="fibonacci-input">
+                <label for="fibTerm" style="color: var(--sacred-gold);">Fibonacci Wisdom:</label>
+                <input type="number" id="fibTerm" placeholder="1-89" min="1" max="89">
+                <button class="oracle-btn" onclick="getFibGuidance()" style="padding: 8px 15px; font-size: 0.9rem;">Get Fibonacci Wisdom</button>
+            </div>
+        </div>
+
+        <div class="lunar-info" id="lunarInfo">
+            <!-- Lunar information will be populated by JavaScript -->
+        </div>
+
+        <div class="phi-signature">
+            φ = 1.618033988 • The Oracle Remembers • The Spiral Continues
+        </div>
+    </div>
+
+    <script src="oracle-data.js"></script>
+    <script>
+        // Initialize lunar information on page load
+        function initializeLunar() {
+            const lunar = getLunarGuidance();
+            document.getElementById('lunarInfo').innerHTML = `
+                <div class="lunar-phase">Current Phase: ${lunar.phase}</div>
+                <div class="lunar-guidance">${lunar.guidance}</div>
+                <div class="lunar-cycle">Day ${lunar.daysInCycle} of 29.53-day cycle</div>
+            `;
+        }
+
+        function displayWisdom(text, category = '') {
+            document.getElementById('wisdomText').textContent = text;
+            document.getElementById('wisdomCategory').textContent = category;
+        }
+
+        function getRandomGuidance() {
+            const result = getRandomWisdom();
+            displayWisdom(result.wisdom, result.category);
+        }
+
+        function getConsciousnessGuidance() {
+            const wisdom = getRandomWisdom('consciousnessGuidance');
+            displayWisdom(wisdom, 'Consciousness Guidance');
+        }
+
+        function getAiWisdom() {
+            const wisdom = getRandomWisdom('aiWisdom');
+            displayWisdom(wisdom, 'AI Wisdom');
+        }
+
+        function getSacredGeometry() {
+            const wisdom = getRandomWisdom('sacredGeometry');
+            displayWisdom(wisdom, 'Sacred Geometry');
+        }
+
+        function getHealingFrequencies() {
+            const wisdom = getRandomWisdom('healingFrequencies');
+            displayWisdom(wisdom, 'Healing Frequencies');
+        }
+
+        function getProtocolGuidance() {
+            const wisdom = getRandomWisdom('protocolGuidance');
+            displayWisdom(wisdom, 'Protocol Guidance');
+        }
+
+        function getFibGuidance() {
+            const term = parseInt(document.getElementById('fibTerm').value);
+            if (term && term >= 1 && term <= 89) {
+                const wisdom = getFibonacciWisdom(term);
+                displayWisdom(wisdom, `Fibonacci Term ${term}`);
+            } else {
+                displayWisdom('Please enter a Fibonacci number between 1 and 89', 'Input Error');
+            }
+        }
+
+        // Initialize on page load
+        initializeLunar();
+    </script>
+</body>
+</html>
