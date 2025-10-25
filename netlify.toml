@@ -8,6 +8,15 @@
   # No build command needed - this is a static HTML site
   command = ""
 
+# Plugin Configuration
+# Note: If you see "netlify-plugin-bundle-env failed" warnings during deployment,
+# they can be safely ignored. This is a static HTML site with no build process or
+# environment variables, so the bundle-env plugin has nothing to do.
+#
+# The site will deploy successfully despite the plugin warning.
+# To completely remove the warning, disable the plugin in Netlify UI:
+# Site Settings > Build & Deploy > Plugins > Remove netlify-plugin-bundle-env
+
 # Headers for security and performance
 [[headers]]
   for = "/*"
