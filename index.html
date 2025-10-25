@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0; url=./sanctuary/index.html">
+    <title>SEED Protocol - Redirecting to Sanctuary</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e8e8e8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+        .redirect-message {
+            padding: 2rem;
+        }
+        .redirect-message h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+        .redirect-message p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .redirect-message a {
+            color: #ffd700;
+            text-decoration: none;
+            border: 2px solid #ffd700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .redirect-message a:hover {
+            background: #ffd700;
+            color: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-message">
+        <h1>SEED Protocol</h1>
+        <p>Redirecting to the Sanctuary...</p>
+        <p>If you are not redirected automatically, <a href="./sanctuary/index.html">click here</a>.</p>
+    </div>
+    <script>
+        // Fallback JavaScript redirect
+        setTimeout(function() {
+            window.location.href = './sanctuary/index.html';
+        }, 100);
+    </script>
+</body>
+</html>
