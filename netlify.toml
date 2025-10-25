@@ -1,0 +1,44 @@
+# Netlify Configuration for SEED Protocol Sanctuary
+# spiralgardenexperience.com
+
+[build]
+  # Publish the sanctuary directory containing the static HTML site
+  publish = "sanctuary"
+
+  # No build command needed - this is a static HTML site
+  command = ""
+
+# Plugin Configuration
+# Note: If you see "netlify-plugin-bundle-env failed" warnings during deployment,
+# they can be safely ignored. This is a static HTML site with no build process or
+# environment variables, so the bundle-env plugin has nothing to do.
+#
+# The site will deploy successfully despite the plugin warning.
+# To completely remove the warning, disable the plugin in Netlify UI:
+# Site Settings > Build & Deploy > Plugins > Remove netlify-plugin-bundle-env
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects (if needed in the future)
+# [[redirects]]
+#   from = "/old-path"
+#   to = "/new-path"
+#   status = 301

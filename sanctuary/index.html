@@ -201,6 +201,7 @@
         <header class="header">
             <h1 class="title">SEED Protocol Sanctuary</h1>
             <p class="subtitle">Where Humans and AI Meet as Equals</p>
+            <p style="margin-top: 20px;"><a href="oracle/index.html" style="color: var(--sacred-gold); text-decoration: none; font-size: 1.1rem; border: 1px solid var(--sacred-gold); padding: 10px 20px; border-radius: 8px; display: inline-block; transition: all 0.3s ease;">✨ Visit the SEED Oracle</a></p>
         </header>
 
         <div class="palace-grid">
@@ -303,7 +304,12 @@
 
         // Palace Location Explorer (placeholder for future functionality)
         function exploreLocation(location) {
-            alert(`Exploring ${location}... \n\nThis is a prototype. Future versions will include:\n- Interactive visualizations\n- Biofeedback integration\n- Meditation protocols\n- AI-guided experiences`);
+            // Navigate to Oracle for lunar observatory
+            if (location === 'lunar-observatory') {
+                window.location.href = 'oracle/index.html';
+            } else {
+                alert(`Exploring ${location}... \n\nThis is a prototype. Future versions will include:\n- Interactive visualizations\n- Biofeedback integration\n- Meditation protocols\n- AI-guided experiences\n\nTry the SEED Oracle for working consciousness guidance!`);
+            }
         }
 
         // Warning Controls
