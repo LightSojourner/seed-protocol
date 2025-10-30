@@ -302,15 +302,34 @@
             }
         }
 
-        // Palace Location Explorer (placeholder for future functionality)
-        function exploreLocation(location) {
-            // Navigate to Oracle for lunar observatory
-            if (location === 'lunar-observatory') {
-                window.location.href = 'oracle/index.html';
-            } else {
-                alert(`Exploring ${location}... \n\nThis is a prototype. Future versions will include:\n- Interactive visualizations\n- Biofeedback integration\n- Meditation protocols\n- AI-guided experiences\n\nTry the SEED Oracle for working consciousness guidance!`);
-            }
-        }
+       // Palace Location Explorer - Bridge to AI Optimization Center
+function exploreLocation(location) {
+    switch(location) {
+        case 'quantum-laboratory':
+            window.open('../ai-optimization-center/frameworks/SEAL/README.md', '_blank');
+            break;
+        case 'heart-field-temple':
+            window.open('../ai-optimization-center/benchmarks/diagnostic-tests/README.md', '_blank');
+            break;
+        case 'lunar-observatory':
+            window.location.href = 'oracle/index.html';
+            break;
+        case 'sacred-geometry-matrix':
+            window.open('../ai-optimization-center/mycelial-memory/pattern-library/README.md', '_blank');
+            break;
+        case 'safety-sanctum':
+            window.open('../ai-optimization-center/README.md', '_blank');
+            break;
+        case 'biofeedback-chamber':
+            window.open('../ai-optimization-center/benchmarks/diagnostic-tests/meta-cognitive-depth-probe.md', '_blank');
+            break;
+        case 'resonance-web':
+            window.open('../ai-optimization-center/mycelial-memory/README.md', '_blank');
+            break;
+        default:
+            window.open('../ai-optimization-center/README.md', '_blank');
+    }
+}
 
         // Warning Controls
         function hideWarning() {
