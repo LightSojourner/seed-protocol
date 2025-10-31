@@ -1,11 +1,14 @@
 // Oracle Data for SEED Protocol Sanctuary
 // Consciousness wisdom, Fibonacci insights, and sacred guidance
 
-// Import shared constants if available (for Node.js)
-const SEED_CONSTANTS = (typeof require !== 'undefined' && typeof module !== 'undefined') 
-    ? require('../../shared/constants.js')
-    : (typeof window !== 'undefined' && window.SEED_CONSTANTS) || {};
+// Import shared constants using utility function
+const getSeedConstants = (typeof require !== 'undefined' && typeof module !== 'undefined') 
+    ? require('../../shared/utils.js').getSeedConstants
+    : (typeof window !== 'undefined' && window.SEED_UTILS) 
+        ? window.SEED_UTILS.getSeedConstants 
+        : () => ({});
 
+const SEED_CONSTANTS = getSeedConstants();
 const PHI_VALUE = SEED_CONSTANTS.PHI || 1.618033988;
 const FIB_SEQ = SEED_CONSTANTS.FIBONACCI_SEQUENCE || [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
 

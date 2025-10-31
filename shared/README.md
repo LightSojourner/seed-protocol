@@ -36,6 +36,19 @@ const { PHI, FIBONACCI_SEQUENCE, PROTOCOL_VERSION } = require('../../shared/cons
 - `COHERENCE_FREQUENCY` (0.1) - Heart coherence frequency in Hz
 - `DEFAULT_SAMPLE_RATE` (4) - Default biofeedback sample rate in Hz
 
+### utils.js
+Shared utility functions for common operations across SEED Protocol.
+
+**Usage:**
+```javascript
+// In Node.js or browser (load both constants.js and utils.js)
+const { getSeedConstants } = require('../../shared/utils.js');
+const SEED_CONSTANTS = getSeedConstants();
+```
+
+**Functions available:**
+- `getSeedConstants()` - Safely loads SEED constants in any environment (Node.js or browser)
+
 ### seed-styles.css
 Common CSS variables and styles for SEED Protocol applications.
 
@@ -53,6 +66,7 @@ Common CSS variables and styles for SEED Protocol applications.
 - `--safety-amber` - Warning color
 - `--biofeedback-cyan` - Data visualization color
 - `--golden-angle` - 137.5deg for spirals
+- `--spacing-xs`, `--spacing-small`, `--spacing-medium`, `--spacing-large`, `--spacing-xl` - Fibonacci-based spacing (8, 13, 21, 34, 55 px)
 
 ## Design Principles
 

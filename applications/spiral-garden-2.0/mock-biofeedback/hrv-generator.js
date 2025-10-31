@@ -1,10 +1,14 @@
 // Mock HRV Data Generator for SEED Protocol
 // Generates realistic heart rate variability patterns for testing
 
-// Import shared constants if available
-const SEED_CONSTANTS = (typeof require !== 'undefined' && typeof module !== 'undefined') 
-    ? require('../../../shared/constants.js')
-    : (typeof window !== 'undefined' && window.SEED_CONSTANTS) || {};
+// Import shared constants using utility function
+const getSeedConstants = (typeof require !== 'undefined' && typeof module !== 'undefined') 
+    ? require('../../../shared/utils.js').getSeedConstants
+    : (typeof window !== 'undefined' && window.SEED_UTILS) 
+        ? window.SEED_UTILS.getSeedConstants 
+        : () => ({});
+
+const SEED_CONSTANTS = getSeedConstants();
 
 class HRVDataGenerator {
     constructor() {

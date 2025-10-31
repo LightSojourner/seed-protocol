@@ -22,10 +22,12 @@
     /* Golden Angle for spiral visualizations */
     --golden-angle: 137.5deg;
     
-    /* Common spacing based on phi */
-    --spacing-small: calc(10px / var(--phi));
-    --spacing-medium: calc(20px / var(--phi));
-    --spacing-large: calc(40px * var(--phi));
+    /* Common spacing based on phi (fibonacci progression) */
+    --spacing-xs: 8px;  /* ~5 * 1.618 */
+    --spacing-small: 13px;  /* fibonacci: 13 */
+    --spacing-medium: 21px;  /* fibonacci: 21 */
+    --spacing-large: 34px;  /* fibonacci: 34 */
+    --spacing-xl: 55px;  /* fibonacci: 55 */
 }
 
 /* Common reset */
