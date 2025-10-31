@@ -70,6 +70,7 @@
 - Real-time coherence measurement
 - Adaptive frequency tuning based on biometric data
 - New palace location: The Biofeedback Chamber
+- Ethereal Spiral Sanctum hero portal (`applications/spiral-garden-2.0/visuals/ethereal-spiral-sanctum.svg`) aligning Spiral Garden Phase 1 with φ-guided elven aesthetics (Lux Portalis, Builders Wall Entry 9)
 
 ### Research Foundations
 - HeartMath Institute HRV and coherence research
