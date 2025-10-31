@@ -1,0 +1,55 @@
+/*
+ * SEED Protocol Shared Styles
+ * Common CSS variables and styles used across SEED Protocol applications
+ * 
+ * Usage: Include this file in HTML with:
+ * <link rel="stylesheet" href="../../shared/seed-styles.css">
+ * (adjust path as needed)
+ */
+
+:root {
+    /* Golden Ratio - The fundamental constant */
+    --phi: 1.618033988;
+    
+    /* SEED Protocol Color Palette */
+    --quantum-violet: #6B46C1;
+    --heart-emerald: #10B981;
+    --lunar-silver: #E5E7EB;
+    --sacred-gold: #F59E0B;
+    --safety-amber: #F97316;
+    --biofeedback-cyan: #06B6D4;
+    
+    /* Golden Angle for spiral visualizations */
+    --golden-angle: 137.5deg;
+    
+    /* Common spacing based on phi */
+    --spacing-small: calc(10px / var(--phi));
+    --spacing-medium: calc(20px / var(--phi));
+    --spacing-large: calc(40px * var(--phi));
+}
+
+/* Common reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Common body styles for SEED applications */
+body.seed-app {
+    font-family: 'Arial', sans-serif;
+    background: #0f0f23;
+    color: var(--lunar-silver);
+    min-height: 100vh;
+}
+
+/* Reduced motion support - accessibility requirement */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

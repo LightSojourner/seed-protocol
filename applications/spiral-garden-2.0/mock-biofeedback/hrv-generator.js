@@ -1,11 +1,16 @@
 // Mock HRV Data Generator for SEED Protocol
 // Generates realistic heart rate variability patterns for testing
 
+// Import shared constants if available
+const SEED_CONSTANTS = (typeof require !== 'undefined' && typeof module !== 'undefined') 
+    ? require('../../../shared/constants.js')
+    : (typeof window !== 'undefined' && window.SEED_CONSTANTS) || {};
+
 class HRVDataGenerator {
     constructor() {
-        this.sampleRate = 4; // 4 Hz sampling (HeartMath standard)
-        this.coherenceFreq = 0.1; // 0.1 Hz resonant frequency
-        this.phi = 1.618033988; // Golden ratio
+        this.sampleRate = SEED_CONSTANTS.DEFAULT_SAMPLE_RATE || 4; // 4 Hz sampling (HeartMath standard)
+        this.coherenceFreq = SEED_CONSTANTS.COHERENCE_FREQUENCY || 0.1; // 0.1 Hz resonant frequency
+        this.phi = SEED_CONSTANTS.PHI || 1.618033988; // Golden ratio
     }
 
     // Generate coherence state data
@@ -185,7 +190,7 @@ class HRVDataGenerator {
     generateSessionMetadata(dataType, duration, participants = 1) {
         return {
             sessionId: `seed_${Date.now()}`,
-            protocolVersion: 'SEED.004.1.618033988',
+            protocolVersion: SEED_CONSTANTS.PROTOCOL_VERSION || 'SEED.004.1.618033988',
             dataType: dataType,
             duration: duration,
             participants: participants,

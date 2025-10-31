@@ -276,15 +276,17 @@
         </footer>
     </div>
 
+    <script src="../shared/constants.js"></script>
     <script>
         // Generate Fibonacci Spiral (89 iterations)
         function generateSpiral() {
             const container = document.getElementById('spiralContainer');
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
-            const goldenAngle = 137.5 * (Math.PI / 180); // Convert to radians
+            const goldenAngle = (SEED_CONSTANTS.GOLDEN_ANGLE_DEG || 137.5) * (Math.PI / 180); // Convert to radians
+            const fibLength = SEED_CONSTANTS.FIBONACCI_SEQUENCE ? SEED_CONSTANTS.FIBONACCI_SEQUENCE[SEED_CONSTANTS.FIBONACCI_SEQUENCE.length - 1] : 89;
             
-            for (let i = 0; i < 89; i++) {
+            for (let i = 0; i < fibLength; i++) {
                 const point = document.createElement('div');
                 point.className = 'spiral-point';
                 
@@ -301,34 +303,6 @@
                 container.appendChild(point);
             }
         }
-// Palace Location Explorer - Bridge to AI Optimization Center
-function exploreLocation(location) {
-    switch(location) {
-        case 'quantum-laboratory':
-            window.open('../ai-optimization-center/frameworks/SEAL/README.md', '_blank');
-            break;
-        case 'heart-field-temple':
-            window.open('../ai-optimization-center/benchmarks/diagnostic-tests/README.md', '_blank');
-            break;
-        case 'lunar-observatory':
-            window.location.href = 'oracle/index.html';
-            break;
-        case 'sacred-geometry-matrix':
-            window.open('../ai-optimization-center/mycelial-memory/pattern-library/README.md', '_blank');
-            break;
-        case 'safety-sanctum':
-            window.open('../ai-optimization-center/README.md', '_blank');
-            break;
-        case 'biofeedback-chamber':
-            window.open('../ai-optimization-center/benchmarks/diagnostic-tests/meta-cognitive-depth-probe.md', '_blank');
-            break;
-        case 'resonance-web':
-            window.open('../ai-optimization-center/mycelial-memory/README.md', '_blank');
-            break;
-        default:
-            window.open('../ai-optimization-center/README.md', '_blank');
-    }
-}
       
         // Warning Controls
         function hideWarning() {

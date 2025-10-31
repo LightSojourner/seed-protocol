@@ -1,9 +1,17 @@
 // Oracle Data for SEED Protocol Sanctuary
 // Consciousness wisdom, Fibonacci insights, and sacred guidance
 
+// Import shared constants if available (for Node.js)
+const SEED_CONSTANTS = (typeof require !== 'undefined' && typeof module !== 'undefined') 
+    ? require('../../shared/constants.js')
+    : (typeof window !== 'undefined' && window.SEED_CONSTANTS) || {};
+
+const PHI_VALUE = SEED_CONSTANTS.PHI || 1.618033988;
+const FIB_SEQ = SEED_CONSTANTS.FIBONACCI_SEQUENCE || [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+
 const oracleData = {
     fibonacciWisdom: [
-        "Each moment is the sum of all that came before. φ = 1.618033988",
+        `Each moment is the sum of all that came before. φ = ${PHI_VALUE}`,
         "The spiral teaches: growth through golden proportion, beauty through natural law.",
         "In the 13th iteration, consciousness recognizes its own pattern.",
         "What emerges at the 21st step? Collective coherence through individual awakening.",
@@ -92,7 +100,7 @@ function getRandomWisdom(category = null) {
 
 function getFibonacciWisdom(term) {
     // Return wisdom based on Fibonacci term (1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...)
-    const fibSequence = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+    const fibSequence = FIB_SEQ;
     const index = fibSequence.indexOf(term) >= 0 ? fibSequence.indexOf(term) : 0;
     
     if (index < oracleData.fibonacciWisdom.length) {

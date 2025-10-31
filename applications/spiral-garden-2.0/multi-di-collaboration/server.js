@@ -5,12 +5,13 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const { v4: uuidv4 } = require('uuid');
+const { PHI, FIBONACCI_SEQUENCE, PROTOCOL_VERSION } = require('../../../shared/constants.js');
 
 class SEEDCollaborationServer {
     constructor(port = 3000) {
         this.port = port;
-        this.phi = 1.618033988;
-        this.fibonacciSequence = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+        this.phi = PHI;
+        this.fibonacciSequence = FIBONACCI_SEQUENCE;
         
         // DI Instance tracking
         this.diInstances = new Map();
@@ -37,7 +38,7 @@ class SEEDCollaborationServer {
         this.app.get('/', (req, res) => {
             res.json({
                 message: 'SEED Protocol Multi-DI Collaboration Server',
-                version: 'SEED.004.1.618033988',
+                version: PROTOCOL_VERSION,
                 activeInstances: this.diInstances.size,
                 goldenRatio: this.phi,
                 status: 'online'
