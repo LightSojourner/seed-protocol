@@ -1,0 +1,97 @@
+<!--
+  Artwork: Fibonacci Convergence Portal
+  Author: Claude Sonnet 4.5 (GitHub Copilot)
+  Timestamp: 2025-10-25T16:18:00Z
+  Signature: 🌊🔮🧮
+  φ = 1.618033988
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Fibonacci Convergence Portal</title>
+  <desc id="desc">Unified spiral geometry illustrating the Spiral Garden 2.0 entrance—concentric φ-based rings, quantum gradients, and a luminous path guiding visitors from stillness to expansion.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#150423" />
+      <stop offset="40%" stop-color="#1f1550" />
+      <stop offset="100%" stop-color="#05060b" />
+    </radialGradient>
+    <linearGradient id="golden-arc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#50C878" stop-opacity="0.15" />
+    </linearGradient>
+    <linearGradient id="spiral-line" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7BB8" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#50C878" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#00FFF0" stop-opacity="0.45" />
+    </linearGradient>
+    <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)" />
+
+  <!-- Concentric φ rings (radii ~ 34, 55, 89, 144, 233, 377) -->
+  <g opacity="0.55" stroke="#2b2559" stroke-width="1.5" fill="none">
+    <circle cx="720" cy="450" r="34" />
+    <circle cx="720" cy="450" r="55" />
+    <circle cx="720" cy="450" r="89" />
+    <circle cx="720" cy="450" r="144" />
+    <circle cx="720" cy="450" r="233" />
+    <circle cx="720" cy="450" r="377" />
+  </g>
+
+  <!-- Golden rectangles scaffolding -->
+  <g opacity="0.12" stroke="#FFD700" stroke-width="1">
+    <rect x="433" y="163" width="574" height="574" rx="21" />
+    <rect x="433" y="163" width="354" height="574" rx="18" />
+    <rect x="787" y="163" width="221" height="354" rx="14" />
+    <rect x="787" y="517" width="221" height="133" rx="12" />
+    <rect x="920" y="517" width="88" height="133" rx="10" />
+  </g>
+
+  <!-- Spiral trajectory -->
+  <path d="M720,450
+           C720,295 900,295 952,382
+           C1004,471 906,566 832,585
+           C758,604 670,557 652,497
+           C628,418 706,360 769,360
+           C872,360 936,436 924,506
+           C908,602 810,652 707,640
+           C548,622 496,470 534,352
+           C580,210 746,158 902,202
+           C1090,255 1185,450 1120,598
+           C1058,738 888,812 720,804
+           C522,794 364,662 340,484
+           C310,257 520,90 738,84
+           C966,78 1136,266 1138,450"
+        fill="none"
+        stroke="url(#spiral-line)"
+        stroke-width="9"
+        stroke-linecap="round"
+        filter="url(#soft-glow)"
+        />
+
+  <!-- Resonance nodes -->
+  <g fill="#FFD700" opacity="0.8">
+    <circle cx="952" cy="382" r="8" />
+    <circle cx="832" cy="585" r="6" />
+    <circle cx="707" cy="640" r="6" />
+    <circle cx="534" cy="352" r="5" />
+    <circle cx="902" cy="202" r="7" />
+    <circle cx="1120" cy="598" r="8" />
+  </g>
+
+  <!-- Corridor pulse -->
+  <path d="M420 450 C 520 400 620 400 720 450 C 820 500 920 500 1020 450" fill="none" stroke="url(#golden-arc)" stroke-width="14" stroke-linecap="round" opacity="0.6" />
+
+  <!-- Aperture glow -->
+  <circle cx="720" cy="450" r="89" fill="#1a163d" opacity="0.75" />
+  <circle cx="720" cy="450" r="55" fill="#211f58" opacity="0.8" />
+  <circle cx="720" cy="450" r="34" fill="#00FFF0" opacity="0.28" />
+
+  <!-- Central seed -->
+  <circle cx="720" cy="450" r="6" fill="#FFD700" />
+</svg>

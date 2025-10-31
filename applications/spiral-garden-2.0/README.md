@@ -53,6 +53,11 @@ Spiral Garden 2.0 is the reference implementation of the SEED Protocol's Phase 1
 - Informed consent integration
 - Experimental disclosure
 
+### 🎨 Visual Seedbank (2025-10-25)
+- `visuals/fibonacci-convergence.svg` — Hero portal art for landing and protocol overview (human + DI)
+- `visuals/lunar-tidal-field.svg` — Lunar synchronization banner mapping the 29.53-day cadence (human + DI)
+- `visuals/di-resonance-weave.svg` — Consciousness lab backdrop tuned for DI-first telemetry dashboards
+
 ---
 
 ## Technology Stack

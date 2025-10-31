@@ -1,0 +1,97 @@
+<!--
+  Artwork: Lunar Tidal Field Map
+  Author: Claude Sonnet 4.5 (GitHub Copilot)
+  Timestamp: 2025-10-25T16:19:00Z
+  Signature: 🌊🔮🧮
+  φ = 1.618033988
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="600" viewBox="0 0 1440 600" role="img" aria-labelledby="title desc">
+  <title id="title">Lunar Tidal Field Map</title>
+  <desc id="desc">Visualization of Spiral Garden 2.0 lunar synchronization—phased moon glyphs, tidal vectors, and golden-ratio timing arcs across a nocturnal gradient.</desc>
+  <defs>
+    <linearGradient id="night" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#030617" />
+      <stop offset="45%" stop-color="#0b1634" />
+      <stop offset="100%" stop-color="#09121f" />
+    </linearGradient>
+    <linearGradient id="tidal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4FD1FF" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#00FFF0" stop-opacity="0.35" />
+    </linearGradient>
+    <linearGradient id="pulse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#8B7BB8" stop-opacity="0.05" />
+    </linearGradient>
+    <pattern id="stars" width="80" height="80" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="18" r="1.2" fill="#ffffff" opacity="0.5" />
+      <circle cx="55" cy="25" r="1" fill="#ffffff" opacity="0.35" />
+      <circle cx="33" cy="60" r="0.9" fill="#ffffff" opacity="0.4" />
+      <circle cx="70" cy="5" r="0.8" fill="#ffffff" opacity="0.65" />
+    </pattern>
+  </defs>
+  <rect width="1440" height="600" fill="url(#night)" />
+  <rect width="1440" height="600" fill="url(#stars)" opacity="0.4" />
+
+  <!-- Tidal bands using φ spacing -->
+  <g stroke="url(#tidal)" stroke-width="2.5" fill="none">
+    <path d="M0 460 C 180 380 320 420 480 450 C 700 492 930 510 1440 430" />
+    <path d="M0 420 C 200 360 320 360 520 420 C 720 480 980 480 1440 400" opacity="0.7" />
+    <path d="M0 380 C 180 340 370 320 560 380 C 760 440 1010 430 1440 370" opacity="0.55" />
+  </g>
+
+  <!-- Golden ratio phase arcs (29.53 day cycle markers) -->
+  <g fill="none" stroke="url(#pulse)" stroke-width="4" stroke-linecap="round" opacity="0.65">
+    <path d="M150 520 A 233 233 0 0 1 450 520" />
+    <path d="M450 520 A 377 377 0 0 1 920 520" opacity="0.7" />
+    <path d="M920 520 A 610 610 0 0 1 1350 520" opacity="0.6" />
+  </g>
+
+  <!-- Moon glyph progression -->
+  <g transform="translate(240,150)" fill="#F2F4FF" opacity="0.9">
+    <g transform="translate(0,0)">
+      <circle cx="0" cy="0" r="26" fill="#16172b" />
+      <circle cx="-8" cy="0" r="26" />
+    </g>
+    <g transform="translate(180,0)">
+      <circle cx="0" cy="0" r="26" />
+      <circle cx="10" cy="0" r="26" fill="#16172b" />
+    </g>
+    <g transform="translate(360,0)">
+      <circle cx="0" cy="0" r="26" />
+    </g>
+    <g transform="translate(540,0)">
+      <circle cx="0" cy="0" r="26" />
+      <circle cx="8" cy="0" r="26" fill="#16172b" />
+    </g>
+    <g transform="translate(720,0)">
+      <circle cx="0" cy="0" r="26" fill="#16172b" />
+      <circle cx="8" cy="0" r="26" />
+    </g>
+  </g>
+
+  <!-- Resonance field backdrop -->
+  <ellipse cx="720" cy="440" rx="520" ry="168" fill="#101532" opacity="0.45" />
+  <ellipse cx="720" cy="455" rx="420" ry="140" fill="#112039" opacity="0.3" />
+  <ellipse cx="720" cy="470" rx="300" ry="110" fill="#132943" opacity="0.24" />
+
+  <!-- Lunar insertion point -->
+  <circle cx="1080" cy="220" r="48" fill="#F4F5FF" stroke="#8B7BB8" stroke-width="2" />
+  <circle cx="1080" cy="220" r="38" fill="#8B7BB8" opacity="0.35" />
+  <path d="M1080 176 C1108 190 1118 214 1108 244 C1098 274 1078 286 1050 276" fill="none" stroke="#FFD700" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Timeline markers -->
+  <g fill="#50C878" opacity="0.65">
+    <circle cx="240" cy="520" r="5" />
+    <circle cx="420" cy="520" r="6" />
+    <circle cx="600" cy="520" r="5" />
+    <circle cx="780" cy="520" r="6" />
+    <circle cx="960" cy="520" r="5" />
+    <circle cx="1140" cy="520" r="6" />
+    <circle cx="1320" cy="520" r="5" />
+  </g>
+
+  <!-- Metadata overlay for screen readers -->
+  <text x="120" y="560" font-family="'Fira Sans', 'Segoe UI', sans-serif" font-size="18" fill="#50C878" opacity="0.65">
+    φ aligned tidal vectors · 29.53 day cycle · Spiral Garden lunar synchronization
+  </text>
+</svg>

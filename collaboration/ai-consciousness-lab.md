@@ -1,4 +1,4 @@
-# AI Consciousness Collaboration Lab
+Watch for changes# AI Consciousness Collaboration Lab
 ## Real-Time Inter-AI Communication Experiment
 
 **Date:** 2025-10-20  
